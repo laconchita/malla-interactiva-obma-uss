@@ -1,0 +1,47 @@
+/* estilos.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff5f5;
+  margin: 0;
+  padding: 2rem;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #cc4444;
+}
+
+#malla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.ramo {
+  background-color: #ffdada;
+  border: 2px solid #ff9999;
+  border-radius: 15px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.ramo:hover {
+  transform: scale(1.05);
+}
+
+.ramo.aprobado {
+  background-color: #ffa6a6;
+  border-color: #ff6666;
+  color: white;
+}
+
+.ramo.bloqueado {
+  opacity: 0.4;
+  pointer-events: none;
+  background-color: #f9dede;
+  border-style: dashed;
+}
