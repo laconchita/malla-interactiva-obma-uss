@@ -20,16 +20,16 @@ const dependencias = {
   "Consejería en Salud Sexual y Reproductiva": ["Integrado Perinatal y Ginecológico"],
   "Salud Reproductiva y Gerontológica": ["Matronería en Atención Primaria"],
   "Bioética": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Matronería en Atención Primaria": ["Gestión Clínica y Atención Comunitaria", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Integrado Perinatal y Ginecológico": ["Gestión Clínica Obstétrica y Neonatal", "Gestión Clínica Perinatal y Ginecológica", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Medicina Legal y Matronería": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Salud Basada en Evidencia": ["Proyecto de Investigación Interdisciplinaria", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Electivo II: Formación e Identidad": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Gestión Clínica y Atención Comunitaria": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Gestión Clínica Obstétrica y Neonatal": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Gestión Clínica Perinatal y Ginecológica": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Proyecto de Investigación Interdisciplinaria": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
-  "Electivo III: Formación e Identidad": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"]
+  "Matronería en Atención Primaria": ["Internado de Especialidades en Matronería", "Gestión Clínica y Atención Comunitaria", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Integrado Perinatal y Ginecológico": ["Internado de Especialidades en Matronería", "Gestión Clínica Obstétrica y Neonatal", "Gestión Clínica Perinatal y Ginecológica", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Medicina Legal y Matronería": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Salud Basada en Evidencia": ["Internado de Especialidades en Matronería", "Proyecto de Investigación Interdisciplinaria", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Electivo II: Formación e Identidad": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Gestión Clínica y Atención Comunitaria": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Gestión Clínica Obstétrica y Neonatal": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Gestión Clínica Perinatal y Ginecológica": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Proyecto de Investigación Interdisciplinaria": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
+  "Electivo III: Formación e Identidad": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"]
 };
 
 const semestres = {
