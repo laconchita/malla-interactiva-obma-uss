@@ -15,22 +15,47 @@ h1 {
 
 #malla {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.semestre {
+  background-color: #ffe5e5;
+  border: 2px solid #ffb3b3;
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.semestre h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #cc4444;
+}
+
+.ramos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .ramo {
   background-color: #ffdada;
   border: 2px solid #ff9999;
-  border-radius: 15px;
-  padding: 1rem;
+  border-radius: 10px;
+  padding: 0.5rem;
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.3s;
 }
 
 .ramo:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .ramo.aprobado {
