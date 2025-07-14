@@ -1,5 +1,6 @@
 // script.js
-const ramos = {
+
+const dependencias = {
   "Biología Celular": ["Integrado de Fisiología - Fisiopatología I", "Histoembriología"],
   "Morfología Básica": ["Anatomía Aplicada a la Gineco-Obstetricia"],
   "Química General y Orgánica": ["Bioquímica General"],
@@ -31,25 +32,76 @@ const ramos = {
   "Electivo III: Formación e Identidad": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"]
 };
 
-const container = document.getElementById("malla");
+const semestres = {
+  "1º SEMESTRE": [
+    "Biología Celular", "Morfología Básica", "Química General y Orgánica", "Fundamentos de la Matronería", "Salud Mental en el Curso de la Vida", "Antropología"
+  ],
+  "2º SEMESTRE": [
+    "Integrado de Fisiología - Fisiopatología I", "Histoembriología", "Bioquímica General", "Salud Digital", "Anatomía Aplicada a la Gineco-Obstetricia", "Educación, Salud y Medio Ambiente"
+  ],
+  "3º SEMESTRE": [
+    "Integrado de Fisiología - Fisiopatología II", "Embriología y Genética", "Microbiología Médica", "Bioestadística y Salud", "Proceso de Atención en Matronería"
+  ],
+  "4º SEMESTRE": [
+    "Farmacología General", "Salud Poblacional", "Fisiología Ginecológica y Sexual en el Curso de la Vida", "Fisiología Obstétrica y Neonatal", "Ética"
+  ],
+  "5º SEMESTRE": [
+    "Epidemiología", "Proceso de Atención en Matronería Médico Quirúrgico", "Patología Obstétrica y Neonatal", "Patología Ginecológica en el Curso de la Vida", "Persona y Sociedad"
+  ],
+  "6º SEMESTRE": [
+    "Metodología de la Investigación", "Salud Familiar y Comunitaria", "Gestión y Calidad en Salud", "Consejería en Salud Sexual y Reproductiva", "Salud Reproductiva y Gerontológica", "Electivo I: Formación e Identidad"
+  ],
+  "7º SEMESTRE": [
+    "Bioética", "Matronería en Atención Primaria", "Integrado Perinatal y Ginecológico", "Medicina Legal y Matronería", "Salud Basada en Evidencia", "Electivo II: Formación e Identidad"
+  ],
+  "8º SEMESTRE": [
+    "Gestión Clínica y Atención Comunitaria", "Gestión Clínica Obstétrica y Neonatal", "Gestión Clínica Perinatal y Ginecológica", "Proyecto de Investigación Interdisciplinaria", "Electivo III: Formación e Identidad"
+  ],
+  "9º SEMESTRE": [
+    "Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria"
+  ],
+  "10º SEMESTRE": [
+    "Internado Intrahospitalario", "Electivo 1", "Electivo 2"
+  ]
+};
+
 const estado = {};
 
-function crearBoton(ramo) {
-  const btn = document.createElement("div");
-  btn.className = "ramo";
-  btn.textContent = ramo;
-  btn.onclick = () => aprobarRamo(ramo);
-  if (tieneRequisitos(ramo)) btn.classList.add("bloqueado");
-  estado[ramo] = false;
-  container.appendChild(btn);
+function crearMalla() {
+  const malla = document.getElementById("malla");
+
+  for (const [semestre, ramos] of Object.entries(semestres)) {
+    const bloque = document.createElement("div");
+    bloque.className = "semestre";
+
+    const titulo = document.createElement("h2");
+    titulo.textContent = semestre;
+    bloque.appendChild(titulo);
+
+    const lista = document.createElement("div");
+    lista.className = "ramos";
+
+    ramos.forEach(ramo => {
+      const div = document.createElement("div");
+      div.className = "ramo";
+      div.textContent = ramo;
+      div.onclick = () => aprobarRamo(ramo);
+      if (tieneRequisitos(ramo)) div.classList.add("bloqueado");
+      estado[ramo] = false;
+      lista.appendChild(div);
+    });
+
+    bloque.appendChild(lista);
+    malla.appendChild(bloque);
+  }
 }
 
 function tieneRequisitos(ramo) {
-  return Object.values(ramos).some(arr => arr.includes(ramo));
+  return Object.values(dependencias).some(arr => arr.includes(ramo));
 }
 
 function requisitosAprobados(ramo) {
-  const requisitos = Object.entries(ramos).filter(([, deps]) => deps.includes(ramo)).map(([req]) => req);
+  const requisitos = Object.entries(dependencias).filter(([, deps]) => deps.includes(ramo)).map(([req]) => req);
   return requisitos.every(req => estado[req]);
 }
 
@@ -71,16 +123,4 @@ function aprobarRamo(ramo) {
   actualizarBotones();
 }
 
-const todosRamos = [
-  "Biología Celular", "Morfología Básica", "Química General y Orgánica", "Fundamentos de la Matronería", "Salud Mental en el Curso de la Vida", "Antropología",
-  "Integrado de Fisiología - Fisiopatología I", "Histoembriología", "Bioquímica General", "Salud Digital", "Anatomía Aplicada a la Gineco-Obstetricia", "Educación, Salud y Medio Ambiente",
-  "Integrado de Fisiología - Fisiopatología II", "Embriología y Genética", "Microbiología Médica", "Bioestadística y Salud", "Proceso de Atención en Matronería",
-  "Farmacología General", "Salud Poblacional", "Fisiología Ginecológica y Sexual en el Curso de la Vida", "Fisiología Obstétrica y Neonatal", "Ética",
-  "Epidemiología", "Proceso de Atención en Matronería Médico Quirúrgico", "Patología Obstétrica y Neonatal", "Patología Ginecológica en el Curso de la Vida", "Persona y Sociedad",
-  "Metodología de la Investigación", "Salud Familiar y Comunitaria", "Gestión y Calidad en Salud", "Consejería en Salud Sexual y Reproductiva", "Salud Reproductiva y Gerontológica", "Electivo I: Formación e Identidad",
-  "Bioética", "Matronería en Atención Primaria", "Integrado Perinatal y Ginecológico", "Medicina Legal y Matronería", "Salud Basada en Evidencia", "Electivo II: Formación e Identidad",
-  "Gestión Clínica y Atención Comunitaria", "Gestión Clínica Obstétrica y Neonatal", "Gestión Clínica Perinatal y Ginecológica", "Proyecto de Investigación Interdisciplinaria", "Electivo III: Formación e Identidad",
-  "Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"
-];
-
-todosRamos.forEach(crearBoton);
+crearMalla();
