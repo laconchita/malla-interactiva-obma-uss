@@ -19,23 +19,7 @@ const dependencias = {
   "Patología Ginecológica en el Curso de la Vida": ["Consejería en Salud Sexual y Reproductiva", "Salud Reproductiva y Gerontológica"],
   "Consejería en Salud Sexual y Reproductiva": ["Integrado Perinatal y Ginecológico"],
   "Salud Reproductiva y Gerontológica": ["Matronería en Atención Primaria"],
-
-  // Internado desbloqueado solo si TODO el 7º y 8º semestre está aprobado
-  "Internado de Especialidades en Matronería": [
-    "Bioética",
-    "Matronería en Atención Primaria",
-    "Integrado Perinatal y Ginecológico",
-    "Medicina Legal y Matronería",
-    "Salud Basada en Evidencia",
-    "Electivo II: Formación e Identidad",
-    "Gestión Clínica y Atención Comunitaria",
-    "Gestión Clínica Obstétrica y Neonatal",
-    "Gestión Clínica Perinatal y Ginecológica",
-    "Proyecto de Investigación Interdisciplinaria",
-    "Electivo III: Formación e Identidad"
-  ],
-
-  "Bioética": [],
+  "Bioética": ["Internado de Especialidades en Matronería", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
   "Matronería en Atención Primaria": ["Gestión Clínica y Atención Comunitaria", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
   "Integrado Perinatal y Ginecológico": ["Gestión Clínica Obstétrica y Neonatal", "Gestión Clínica Perinatal y Ginecológica", "Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
   "Medicina Legal y Matronería": ["Internado en Salud Familiar y Comunitaria", "Internado Intrahospitalario", "Electivo 1", "Electivo 2"],
@@ -81,6 +65,7 @@ const semestres = {
   ]
 };
 
+// Recuperar estado guardado (o crear nuevo)
 let estado = JSON.parse(localStorage.getItem("estadoRamos")) || {};
 
 function crearMalla() {
@@ -130,9 +115,7 @@ function tieneRequisitos(ramo) {
 }
 
 function requisitosAprobados(ramo) {
-  const requisitos = Object.entries(dependencias)
-    .filter(([, dependientes]) => dependientes.includes(ramo))
-    .map(([prereq]) => prereq);
+  const requisitos = Object.entries(dependencias).filter(([, deps]) => deps.includes(ramo)).map(([req]) => req);
   return requisitos.every(req => estado[req]);
 }
 
