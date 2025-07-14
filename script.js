@@ -65,7 +65,8 @@ const semestres = {
   ]
 };
 
-const estado = {};
+// Recuperar estado guardado (o crear nuevo)
+let estado = JSON.parse(localStorage.getItem("estadoRamos")) || {};
 
 function crearMalla() {
   const malla = document.getElementById("malla");
@@ -86,14 +87,27 @@ function crearMalla() {
       div.className = "ramo";
       div.textContent = ramo;
       div.onclick = () => aprobarRamo(ramo);
-      if (tieneRequisitos(ramo)) div.classList.add("bloqueado");
-      estado[ramo] = false;
+      if (!estado.hasOwnProperty(ramo)) estado[ramo] = false;
+      if (!estado[ramo] && tieneRequisitos(ramo)) div.classList.add("bloqueado");
       lista.appendChild(div);
     });
 
     bloque.appendChild(lista);
     malla.appendChild(bloque);
   }
+
+  // Marcar ramos ya aprobados
+  Object.entries(estado).forEach(([ramo, aprobado]) => {
+    if (aprobado) {
+      const btn = [...document.querySelectorAll(".ramo")].find(b => b.textContent === ramo);
+      if (btn) {
+        btn.classList.add("aprobado");
+        btn.classList.remove("bloqueado");
+      }
+    }
+  });
+
+  actualizarBotones();
 }
 
 function tieneRequisitos(ramo) {
@@ -117,10 +131,17 @@ function actualizarBotones() {
 function aprobarRamo(ramo) {
   if (estado[ramo]) return;
   estado[ramo] = true;
+  localStorage.setItem("estadoRamos", JSON.stringify(estado));
   const btn = [...document.querySelectorAll(".ramo")].find(b => b.textContent === ramo);
   btn.classList.add("aprobado");
   btn.classList.remove("bloqueado");
   actualizarBotones();
+}
+
+// Opción para reiniciar la malla
+function reiniciarEstado() {
+  localStorage.removeItem("estadoRamos");
+  location.reload();
 }
 
 crearMalla();
